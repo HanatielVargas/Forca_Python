@@ -1,5 +1,9 @@
 # Jogo da Forca
 
+### Imagens da idea (criadas no [Canva](https://www.canva.com/))
+
+
+
 ### Linguagens e Bibliotecas usadas até o momento:
 
 - Python
