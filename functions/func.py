@@ -4,13 +4,13 @@ import pandas as pd
 def limparlista():
         lista = []
         palavras = pd.Series(lista, name='Palavras')
-        palavras.to_excel('./Projetos/Forca_Python/palavras.xlsx')
+        palavras.to_excel('palavras.xlsx')
         return palavras
 
 
 def preencherlista():
         lista = list()
-        palavras = pd.read_excel('./Projetos/Forca_Python/palavras.xlsx')
+        palavras = pd.read_excel('palavras.xlsx')
         for c in palavras['Palavras']:
             lista.append(str(c))
         return lista
@@ -28,5 +28,5 @@ def adicionarpalavra(lista, word):
         else:
             lista.append(word.capitalize())
             palavras = pd.Series(lista, name='Palavras')
-            palavras.to_excel('./Projetos/Forca_Python/palavras.xlsx')
+            palavras.to_excel('.palavras.xlsx')
 
