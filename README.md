@@ -3,3 +3,8 @@
 
 - Python
 - Tkinter
+  - Criar a interface gráfica do aplicativo.
+- Pandas
+  - Banco de Dados que ainda está na maquina.
+- Urllib3
+  - Verificar se uma palavra existe pegando o HTML de um site de dicionários.
