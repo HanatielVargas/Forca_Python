@@ -2,11 +2,13 @@
 
 ### Imagens da ideia (criadas no [Canva](https://www.canva.com/))
 
-<img src='./imgs/ideia/12.png' alt='Jogo da Velha vazio'/> &nbsp; <img src='./imgs/ideia/2.png' alt='Jogo da Velha com a letra F errada'/>
+<img src='./imgs/ideia/1.png' alt='Jogo da Velha vazio'/> &nbsp; <img src='./imgs/ideia/2.png' alt='Jogo da Velha com a letra F errada'/>
 
 <img src='./imgs/ideia/3.png' alt='Jogo da Velha com a letra F errada e a A acertada'/> &nbsp; <img src='./imgs/ideia/4.png' alt='Jogo da Velha com a letra F errada e a A e a P acertada'/>
 
 <img src='./imgs/ideia/5.png' alt='Ganhou o Jogo da Velha'/> &nbsp; <img src='./imgs/ideia/6.png' alt='Perdeu o Jogo da Velha'/>
+
+O Jogo não necessáriamente seguirá essas cores e terá vários temas para alternar entre eles e decidir qual usar.
 
 ### Linguagens e Bibliotecas usadas até o momento:
 
