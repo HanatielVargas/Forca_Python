@@ -8,7 +8,7 @@ def limparlista():
     return palavras
 
 
-def novojogo():
+def novojogo(*args):
     pass
 
 
