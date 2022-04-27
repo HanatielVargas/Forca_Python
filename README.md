@@ -2,7 +2,7 @@
 
 ### Imagens da idea (criadas no [Canva](https://www.canva.com/))
 
-
+<img src='./imgs/ideia/1.png'/>
 
 ### Linguagens e Bibliotecas usadas até o momento:
 
