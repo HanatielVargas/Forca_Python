@@ -28,9 +28,9 @@ temas = ['Branco', 'Preto', 'Roxo', 'teste']
 temaatual = 'Roxo'
 
 class App(Frame):
-        def __init__(self, master=None):
-                super().__init__(master)
-                self.pack()
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
 
 root = Tk()
 root.geometry('900x500+225+150')
@@ -61,4 +61,4 @@ myapp = App(root)
 myapp.master.minsize(900, 500)
 
 if __name__ == '__main__':
-        myapp.mainloop()
+    myapp.mainloop()
