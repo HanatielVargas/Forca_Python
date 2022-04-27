@@ -1,6 +1,6 @@
 # Jogo da Forca
 
-### Imagens da idea (criadas no [Canva](https://www.canva.com/))
+### Imagens da ideia (criadas no [Canva](https://www.canva.com/))
 
 <img src='./imgs/ideia/1.png'/>
 
