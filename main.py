@@ -3,7 +3,6 @@ Jogo Da Forca by Hanatiel Vargas
 Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e a palavra.
 Criando o jogo para aprender tkinter, web scrape e data storage com xlsx e sql. 
 '''
-__version__ = '0.0.1'
 
 from functions import func #Importa funções que eu criei em outro arquivo python
 from tkinter import *
