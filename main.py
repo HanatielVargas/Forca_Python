@@ -43,12 +43,12 @@ style.configure('BW.TFrame', background=tema[temaatual]['Fback'])
 ent1 = font.Font(family='Times', size=12)
 btn1 = font.Font(family='Times', size=16)
 
-root.overrideredirect(True)
+# root.overrideredirect(True)
 
-titlebar = ttk.Frame(root, style='BW.TFrame', relief='raised', border=0)
-titlebar.pack(fill=X)
-titlelabel = Label(titlebar, text='Forca', font=ent1, background=tema[temaatual]['Fback'], foreground=tema[temaatual]['Letra'])
-titlelabel.pack(side='left', pady=2, padx=2)
+# titlebar = ttk.Frame(root, style='BW.TFrame', relief='raised', border=0)
+# titlebar.pack(fill=X)
+# titlelabel = Label(titlebar, text='Forca', font=ent1, background=tema[temaatual]['Fback'], foreground=tema[temaatual]['Letra'])
+# titlelabel.pack(side='left', pady=2, padx=2)
 
 pck = ttk.Frame(root)
 pck.pack(side='bottom')
@@ -58,6 +58,8 @@ bttn1 = Button(pck, text='Sair', font=btn1, activebackground=tema[temaatual]['Fu
 entr1 = Entry(pck, font=ent1, exportselection=0, relief='solid', bg=tema[temaatual]['Fundo'], fg=tema[temaatual]['Letra']).pack(side='top')
 
 myapp = App(root)
+myapp.master.iconphoto(False, PhotoImage(file='imgs/favicon.png'))
+myapp.master.title('Forca')
 myapp.master.minsize(900, 500)
 
 if __name__ == '__main__':
