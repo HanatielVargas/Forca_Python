@@ -33,7 +33,7 @@ Clássico Jogo da Forca com palavras e um boneco sendo enforcado, sendo necessá
 
 ##
 
-<h3>Descrição detalhada do Jogo</h3>
+<h3>Detailed descripcion of the game</h3>
 
   Classic Hangman (game) with words and a man being hang, all you need is to guess correctly the word, suggesting letters within a certain number of guesses, to save the man. In the classic game a tip is given (on the brazilian version at least), the tip is a word that has a strong relationship with the word to be guessed. e.g. if the word to be guessed is **Strawberry**, the tip may be **Fruit**.
   
