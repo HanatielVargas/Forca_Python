@@ -8,6 +8,10 @@ def limparlista():
     return palavras
 
 
+def novojogo():
+    pass
+
+
 def preencherlista():
     lista = list()
     palavras = pd.read_excel('palavras.xlsx')

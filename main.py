@@ -4,14 +4,17 @@ Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e 
 Criando o jogo para aprender tkinter, web scrape e data storage com xlsx e sql. 
 '''
 
-from functions import func #Importa funções que eu criei em outro arquivo python
+#Importa funções que eu criei em outro arquivo python
+from functions import func 
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
 
-lista = func.preencherlista() #Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo (por enquanto)
+#Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo (por enquanto)
+lista = func.preencherlista() 
 
-tema = {'Branco':{'Letra': '#000000', # Dicionário com os temas do app
+# Dicionário com os temas do app
+tema = {'Branco':{'Letra': '#000000', 
                   'Fundo': '#FFFFFF',
                   'Fback': '#777777'}, 
         'Preto': {'Letra': '#FFFFFF', 
@@ -32,35 +35,34 @@ class App(Frame):
         super().__init__(master)
         self.pack()
 
+# Cria e configura a tela principal
 root = Tk()
 root.geometry('900x500+225+150')
 root.configure(background=tema[temaatual]['Fundo'])
 
-style = ttk.Style(root)
-style.configure('TFrame', background=tema[temaatual]['Fundo'])
-style.configure('BW.TFrame', background=tema[temaatual]['Fback'])
-
-ent1 = font.Font(family='Times', size=12)
-btn1 = font.Font(family='Times', size=16)
-
-# root.overrideredirect(True)
-
-# titlebar = ttk.Frame(root, style='BW.TFrame', relief='raised', border=0)
-# titlebar.pack(fill=X)
-# titlelabel = Label(titlebar, text='Forca', font=ent1, background=tema[temaatual]['Fback'], foreground=tema[temaatual]['Letra'])
-# titlelabel.pack(side='left', pady=2, padx=2)
-
-pck = ttk.Frame(root)
-pck.pack(side='bottom')
-
-bttn1 = Button(pck, text='Sair', font=btn1, activebackground=tema[temaatual]['Fundo'], activeforeground=tema[temaatual]['Letra'], bg=tema[temaatual]['Fundo'], fg=tema[temaatual]['Letra'], command=root.destroy, relief='flat').pack(side='bottom', pady=10)
-
-entr1 = Entry(pck, font=ent1, exportselection=0, relief='solid', bg=tema[temaatual]['Fundo'], fg=tema[temaatual]['Letra']).pack(side='top')
-
+# passa o jogo para uma classe
 myapp = App(root)
 myapp.master.iconphoto(False, PhotoImage(file='imgs/favicon.png'))
 myapp.master.title('Forca')
 myapp.master.minsize(900, 500)
+
+# Configura alguns esilos para o jogo
+style = ttk.Style(root)
+style.configure('TFrame', background=tema[temaatual]['Fundo'])
+style.configure('BW.TFrame', background=tema[temaatual]['Fback'])
+
+# Parte de baixo da interface do jogo 
+baixo = Frame(root)
+baixo.pack(side='bottom')
+
+
+# Botão de novo jogo
+novojogo_button = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=150, height=50, relief='flat', bd=-1)
+novojogo_button.pack()
+btn = novojogo_button.create_rectangle(150, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline='#00FF00')
+btn_txt = novojogo_button.create_text(75, 25, text='Novo Jogo', fill=tema[temaatual]['Letra'], font='Times 17 bold')
+novojogo_button.tag_bind(btn, '<Button-1>', func.novojogo)
+novojogo_button.tag_bind(btn_txt, '<Button-1>', func.novojogo)
 
 if __name__ == '__main__':
     myapp.mainloop()
