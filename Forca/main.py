@@ -8,7 +8,6 @@ import tkinter
 from functions import func
 from tkinter import *
 from tkinter import ttk
-import pandas as pd
 
 # Dicionário com os temas do app
 tema = {'Branco':{'Letra': '#000000', 
@@ -45,7 +44,7 @@ root.configure(background=tema[temaatual]['Fundo'])
 
 # passa o jogo para uma classe
 myapp = App(root)
-myapp.master.iconphoto(False, PhotoImage(file='imgages/favicon.png'))
+myapp.master.iconphoto(False, PhotoImage(file='Forca/images/favicon.png'))
 myapp.master.title('Forca')
 myapp.master.minsize(900, 500)
 
