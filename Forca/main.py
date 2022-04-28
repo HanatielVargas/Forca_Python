@@ -45,7 +45,7 @@ root.configure(background=tema[temaatual]['Fundo'])
 
 # passa o jogo para uma classe
 myapp = App(root)
-myapp.master.iconphoto(False, PhotoImage(file='imgs/favicon.png'))
+myapp.master.iconphoto(False, PhotoImage(file='imgages/favicon.png'))
 myapp.master.title('Forca')
 myapp.master.minsize(900, 500)
 
