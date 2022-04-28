@@ -1,5 +1,5 @@
 import pandas as pd
-
+import main
 
 def limparlista():
     lista = []
@@ -11,7 +11,7 @@ def novojogo(*args):
     pass
 
 
-def preencherlista():
+def preencherlista(*args):
     lista = list()
     palavras = pd.read_excel('palavras.xlsx')
     for c in palavras['Palavras']:
@@ -34,9 +34,8 @@ def adicionarpalavra(lista, word):
         palavras.to_excel('.palavras.xlsx')
 
 
-def trocartema(*args):
-    global temaatual, temas 
+def trocartema(temaatual, temas):
     for i, c in enumerate(temas):
         if temas[i-1] == temaatual:
-            temaatual = c
+            main.temaatual = c
             break
