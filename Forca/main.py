@@ -4,10 +4,9 @@ Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e 
 Criando o jogo para aprender tkinter, web scrape e data storage com xlsx e sql. 
 '''
 
-import tkinter
+from doctest import master
 from functions import func
 from tkinter import *
-from tkinter import ttk
 
 # Dicionário com os temas do app
 tema = {'Branco':{'Letra': '#000000', 
@@ -24,66 +23,88 @@ tema = {'Branco':{'Letra': '#000000',
                   'Fback': '#777777'}} 
 
 temas = list(tema.keys())
-temaatual = 'Branco'
+temaatual = 'Roxo'
 
 
 #Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo
 lista = func.preencherlista()
-
+palavra = 'meio' 
+palavra_adv = ('_ ' * len(palavra))[:-1]
 letras = list()
 
-class App(Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.pack()
 
-# Cria e configura a tela principal
-root = Tk()
-root.geometry('900x500+225+150')
-root.configure(background=tema[temaatual]['Fundo'])
+class View(Frame):
+    def __init__(self, root):
+        super().__init__(root)
 
-# passa o jogo para uma classe
-myapp = App(root)
-myapp.master.iconphoto(False, PhotoImage(file='Forca/images/favicon.png'))
-myapp.master.title('Forca')
-myapp.master.minsize(900, 500)
+        # Parte de baixo da interface do jogo 
+        self.baixo = Frame(root)
+        self.baixo.pack(side='bottom')
+        self.baixo.configure(background=tema[temaatual]['Fundo'])
 
-# Configura alguns esilos para o jogo
-style = ttk.Style(root)
-style.configure('TFrame', background=tema[temaatual]['Fundo'])
-style.configure('BW.TFrame', background=tema[temaatual]['Fback'])
+        # Botão de sair
+        self.sair_rect = Canvas(self.baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
+        self.sair_rect.pack(side='left')
+        self.sbtn = self.sair_rect.create_rectangle(300, 55, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
+        self.sbtn_txt = self.sair_rect.create_text(150, 25, text='Sair', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
+        self.sair_rect.tag_bind(self.sbtn_txt, '<Button-1>', quit) # adicionar função
 
-# Parte de baixo da interface do jogo 
-baixo = Frame(root)
-baixo.pack(side='bottom')
+        # Botão de novo jogo
+        self.novojogo_rect = Canvas(self.baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
+        self.novojogo_rect.pack(side='left')
+        self.njbtn = self.novojogo_rect.create_rectangle(300, 55, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
+        self.njbtn_txt = self.novojogo_rect.create_text(150, 25, text='Novo Jogo', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
+        self.novojogo_rect.tag_bind(self.njbtn_txt, '<Button-1>', func.novojogo)
 
-# Botão de sair
-sair_rect = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
-sair_rect.pack(side='left')
-sbtn = sair_rect.create_rectangle(300, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
-sbtn_txt = sair_rect.create_text(150, 25, text='Sair', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
-sair_rect.tag_bind(sbtn_txt, '<Button-1>', quit) # adicionar função
-
-# Botão de novo jogo
-novojogo_rect = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
-novojogo_rect.pack(side='left')
-njbtn = novojogo_rect.create_rectangle(300, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
-njbtn_txt = novojogo_rect.create_text(150, 25, text='Novo Jogo', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
-novojogo_rect.tag_bind(njbtn_txt, '<Button-1>', func.novojogo)
-
-# Botão de Mudar tema
-mudartema_rect = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
-mudartema_rect.pack(side='left')
-mtbtn = mudartema_rect.create_rectangle(300, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
-mtbtn_txt = mudartema_rect.create_text(150, 25, text='Mudar Tema', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
-mudartema_rect.tag_bind(mtbtn_txt, '<Button-1>', func.trocartema(temaatual, temas))
+        # Botão de Mudar tema
+        self.mudartema_rect = Canvas(self.baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
+        self.mudartema_rect.pack(side='left')
+        self.mtbtn = self.mudartema_rect.create_rectangle(300, 55, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
+        self.mtbtn_txt = self.mudartema_rect.create_text(150, 25, text='Mudar Tema', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
+        self.mudartema_rect.tag_bind(self.mtbtn_txt, '<Button-1>', func.trocartema(temaatual, temas))
 
 
-meio = Frame(root)
-meio.pack(side='bottom')
+        # Parte do meio da interface do jogo
+        self.meio = Frame(root)
+        self.meio.pack(side='bottom')
+        self.meio.configure(background=tema[temaatual]['Fundo'])
 
-lbl = ttk.Label(meio, text='A')
-lbl.pack(side='bottom')
+        # Área de input
+        self.input_area = Entry(self.meio, bg=tema[temaatual]['Fundo'], fg=tema[temaatual]['Letra'], font='Times 17 bold', justify='center', selectborderwidth=1, bd=1, exportselection=0)
+        self.input_area.pack(pady=30)
+
+
+        # Parte de cima da interface do jogo
+        self.cima = Frame(root)
+        self.cima.pack()
+        self.cima.configure(background=tema[temaatual]['Fundo'])
+
+        # Área das imagens da forca
+
+        # Área da palavra e as letras acertadas
+        self.palavra_lbl = Canvas(self.cima, bg=tema[temaatual]['Fundo'], height=600, width=300, relief='flat', bd=-1, border=-2)
+        self.palavra_lbl.pack(side='left')
+        self.pllbl = self.palavra_lbl.create_rectangle(300, 600, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
+        self.pllbl_txt = self.palavra_lbl.create_text(150, 300, text=palavra_adv, fill=tema[temaatual]['Letra'], font='Times 17 bold')
+
+        # Área das letras erradas
+
+
+class App(Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.title('Forca')
+        self.iconphoto(False, PhotoImage(file='Forca/images/favicon.png'))
+        self.title('Forca')
+        self.minsize(900, 500)
+        self.geometry('900x500+225+150')
+        self.configure(background=tema[temaatual]['Fundo'])
+
+        view = View(self)
+        view.pack()
+
 
 if __name__ == '__main__':
-    tkinter.mainloop()
+    app = App()
+    app.mainloop()
