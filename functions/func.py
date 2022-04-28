@@ -1,5 +1,4 @@
 import pandas as pd
-import main
 
 def limparlista():
     lista = []
@@ -37,5 +36,5 @@ def adicionarpalavra(lista, word):
 def trocartema(temaatual, temas):
     for i, c in enumerate(temas):
         if temas[i-1] == temaatual:
-            main.temaatual = c
+            temaatual = c
             break
