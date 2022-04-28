@@ -4,7 +4,8 @@ Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e 
 Criando o jogo para aprender tkinter, web scrape e data storage com xlsx e sql. 
 '''
 
-from functions.func import *
+import tkinter
+from functions import func
 from tkinter import *
 from tkinter import ttk
 import pandas as pd
@@ -28,9 +29,8 @@ temaatual = 'Branco'
 
 
 #Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo
-lista = preencherlista()
-x = 0
-palavra = lista[x]
+lista = func.preencherlista()
+
 letras = list()
 
 class App(Frame):
@@ -70,14 +70,14 @@ novojogo_rect = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=300, height=55,
 novojogo_rect.pack(side='left')
 njbtn = novojogo_rect.create_rectangle(300, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
 njbtn_txt = novojogo_rect.create_text(150, 25, text='Novo Jogo', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
-novojogo_rect.tag_bind(njbtn_txt, '<Button-1>', novojogo)
+novojogo_rect.tag_bind(njbtn_txt, '<Button-1>', func.novojogo)
 
 # Botão de Mudar tema
 mudartema_rect = Canvas(baixo, bg=tema[temaatual]['Fundo'], width=300, height=55, relief='flat', bd=-1, border=-2)
 mudartema_rect.pack(side='left')
 mtbtn = mudartema_rect.create_rectangle(300, 50, 0, 0, fill=tema[temaatual]['Fundo'], outline=tema[temaatual]['Fundo'])
 mtbtn_txt = mudartema_rect.create_text(150, 25, text='Mudar Tema', fill=tema[temaatual]['Letra'], font='Times 17 bold', activefill=tema[temaatual]['Fback'])
-mudartema_rect.tag_bind(mtbtn_txt, '<Button-1>', trocartema)
+mudartema_rect.tag_bind(mtbtn_txt, '<Button-1>', func.trocartema(temaatual, temas))
 
 
 meio = Frame(root)
@@ -87,4 +87,4 @@ lbl = ttk.Label(meio, text='A')
 lbl.pack(side='bottom')
 
 if __name__ == '__main__':
-    myapp.mainloop()
+    tkinter.mainloop()
