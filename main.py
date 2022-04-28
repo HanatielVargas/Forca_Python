@@ -4,56 +4,10 @@ Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e 
 Criando o jogo para aprender tkinter, web scrape e data storage com xlsx e sql. 
 '''
 
+from functions.func import *
 from tkinter import *
 from tkinter import ttk
 import pandas as pd
-
-
-def limparlista():
-    lista = []
-    palavras = pd.Series(lista, name='Palavras')
-    palavras.to_excel('palavras.xlsx')
-
-
-def novojogo(*args):
-    pass
-
-
-def preencherlista():
-    lista = list()
-    palavras = pd.read_excel('palavras.xlsx')
-    for c in palavras['Palavras']:
-        lista.append(str(c))
-    return lista
-
-
-def adicionarpalavra(lista, word):
-    from urllib3 import PoolManager, exceptions
-
-    try:
-        site = PoolManager().request('GET', f'https://www.dicio.com.br/{word.lower()}/')
-        if 'Ops' in str(site.data):
-            raise exceptions.SSLError
-    except exceptions.SSLError:
-        pass
-    else:
-        lista.append(word.capitalize())
-        palavras = pd.Series(lista, name='Palavras')
-        palavras.to_excel('.palavras.xlsx')
-
-
-def trocartema(temas, escolhido, atual):
-    if temas[escolhido] in temas:
-        return temas[escolhido]
-    else:
-        for c in temas:
-            if c == atual:
-                continue
-            return temas 
-
-
-#Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo (por enquanto)
-lista = preencherlista() 
 
 # Dicionário com os temas do app
 tema = {'Branco':{'Letra': '#000000', 
@@ -69,8 +23,15 @@ tema = {'Branco':{'Letra': '#000000',
                   'Fundo': '#FF7975',
                   'Fback': '#777777'}} 
 
-temas = ['Branco', 'Preto', 'Roxo', 'teste']
-temaatual = 'Roxo'
+temas = list(tema.keys())
+temaatual = 'Branco'
+
+
+#Preenche a lista que, inicialmente vazia, vai disponibilizar as palavras para o jogo
+lista = preencherlista()
+x = 0
+palavra = lista[x]
+letras = list()
 
 class App(Frame):
     def __init__(self, master=None):
