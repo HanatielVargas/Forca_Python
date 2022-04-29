@@ -1,5 +1,11 @@
 # Jogo da Forca
 
+### Prints do app (ainda não funcional)
+
+<img src='Forca/images/prints/1.png' alt='print do app jogo da forca'/> &nbsp; <img src='Forca/images/prints/2.png' alt='print do app joog da forca'/>
+
+##
+
 ### Imagens da ideia (criadas no [Canva](https://www.canva.com/))
 
 <img src='Forca/images/ideia/1.png' alt='Jogo da Velha vazio'/> &nbsp; <img src='Forca/images/ideia/2.png' alt='Jogo da Velha com a letra F errada'/>
@@ -9,6 +15,8 @@
 <img src='Forca/images/ideia/5.png' alt='Ganhou o Jogo da Velha'/> &nbsp; <img src='Forca/images/ideia/6.png' alt='Perdeu o Jogo da Velha'/>
 
 O Jogo não necessáriamente seguirá essas cores e terá vários temas para alternar entre eles e decidir qual usar.
+
+##
 
 ### Linguagens e Bibliotecas usadas até o momento:
 
