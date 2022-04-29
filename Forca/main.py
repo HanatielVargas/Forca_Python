@@ -29,10 +29,15 @@ class Model:
                                'Fback': '#777777'},
                      'Rosa':  {'Letra': '#361133',
                                'Fundo': '#FF7975',
-                               'Fback': '#777777'}} 
+                               'Fback': '#777777'},
+                     'padrao':{'Letra': '#000000',
+                               'Fundo': '#F0F0F0',
+                               'Fback': '#E396FF'}} 
 
         self.temas = list(self.tema.keys())
-        self.temaatual = self.temas[0]
+        self.temaatual = self.temas[1]
+
+        self.imagematual = 'Forca/images/forca_6vidas.png'
 
         self.preencherlista()
 
@@ -111,16 +116,30 @@ class View(Frame):
         self.cima.configure(background=Controller().fundo)
 
         # Área das imagens da forca
-        # Não feito
+        self.imagem = PhotoImage(file=Controller().imagem) 
+        self.img = Label(self.cima, image=self.imagem)
+        self.img.imagem = self.imagem
+        self.img.pack(side='left', pady=44, padx=44)
+
+        # Área do meio da parte de cima
+        self.meiocima = Frame(self.cima)
+        self.meiocima.pack(side='left')
 
         # Área da palavra e as letras acertadas
-        self.palavra_lbl = Canvas(self.cima, bg=Controller().fundo, height=600, width=300, relief='flat', bd=-1, border=-2)
-        self.palavra_lbl.pack(side='left')
-        self.pllbl = self.palavra_lbl.create_rectangle(300, 600, 0, 0, fill=Controller().fundo, outline=Controller().fundo)
-        self.pllbl_txt = self.palavra_lbl.create_text(150, 300, text=Model().palavra_adv, fill=Controller().letra, font='Times 17 bold')
+        self.palavra_lbl = Canvas(self.meiocima, bg=Controller().fundo, height=55, width=300, relief='flat', bd=-1, border=-2)
+        self.palavra_lbl.pack(side='bottom')
+        self.pllbl = self.palavra_lbl.create_rectangle(300, 55, 0, 0, fill=Controller().fundo, outline=Controller().fundo)
+        self.pllbl_txt = self.palavra_lbl.create_text(150, 25, text=Model().palavra_adv, fill=Controller().letra, font='Times 17 bold')
+
+        # Área de mostrar se ganhou ou perdeu
+        self.status = Canvas(self.meiocima, bg=Controller().fundo, height=55, width=300, relief='flat', bd=-1, border=-2)
+        self.status.pack(side='bottom')
+        self.stts = self.status.create_rectangle(300, 55, 0, 0, fill=Controller().fundo, outline=Controller().fundo)
+        self.stts_txt = self.status.create_text(150, 25, text=Controller().status[0], fill=Controller().status[1], font='Times 17 bold')
 
         # Área das letras erradas
-        # Não feito
+        self.letrase = Label(self.cima, background=Controller().actfl, foreground=Controller().letra, wraplength=25, text=Controller().letraserradas, justify='center', width=20)
+        self.letrase.pack(side='left')
 
         self.controller = None
 
@@ -136,6 +155,9 @@ class Controller:
         self.letra = Model().tema[Model().temaatual]['Letra']
         self.actfl = Model().tema[Model().temaatual]['Fback']
 
+        self.imagem = str(Model().imagematual)
+        self.status = ['Você Ganhou', 'green']
+        self.letraserradas = 'A    D    F    G    HJ    K    L'
 
     def novojogo(self, *args):
         pass
