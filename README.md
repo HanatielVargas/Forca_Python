@@ -4,6 +4,8 @@
 
 <img src='Forca/images/prints/1.png' alt='print do app jogo da forca'/> &nbsp; <img src='Forca/images/prints/2.png' alt='print do app joog da forca'/>
 
+<img src='Forca/images/prints/3.png' alt='print do app jogo da forca em que o jogador ganhou'/> &nbsp; <img src='Forca/images/prints/4.png' alt='print do app joog da forca em que o jogador perdeu'/>
+
 ##
 
 ### Imagens da ideia (criadas no [Canva](https://www.canva.com/))
