@@ -175,6 +175,7 @@ class Controller:
         self.letrasace = ''
         self.letraserradas = self.letrase()
 
+
     def novojogo(self, *args):
         pass
 
@@ -196,7 +197,7 @@ class Controller:
             string += f'{c.upper()}'
 
             if self.letraserr[-1] != self.letraserr[i]:
-                string += '    '
+                string += ' '*4
 
         return string
 
