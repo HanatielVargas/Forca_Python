@@ -106,9 +106,20 @@ class View(Frame):
         self.meio.pack(side='bottom')
         self.meio.configure(background=Controller().fundo)
 
+        self.meioinp = Frame(self.meio)
+        self.meioinp.pack(side='left')
+        self.meioinp.configure(background=Controller().fundo)
+
         # Área de input
         self.input_area = Entry(self.meio, bg=Controller().fundo, fg=Controller().letra, font='Times 17 bold', justify='center', selectborderwidth=1, bd=1, exportselection=0)
-        self.input_area.pack(pady=30)
+        self.input_area.pack(pady=30, side='left')
+
+        # Botão de verificar letra
+        self.checkbutton = Canvas(self.meio, bg=Controller().fundo, width=70, height=50, relief='flat', bd=-1, border=-2)
+        self.checkbutton.pack(side='left')
+        self.chbtn = self.checkbutton.create_rectangle(50, 50, 0, 0, fill=Controller().fundo, outline=Controller().fundo)
+        self.chtn_txt = self.checkbutton.create_text(35, 25, text='Add', fill=Controller().letra, font='Times 17 bold', activefill=Controller().actfl)
+        self.checkbutton.tag_bind(self.chtn_txt, '<Button-1>', Controller.verifica)
 
 
         # Parte de cima da interface do jogo
@@ -141,7 +152,7 @@ class View(Frame):
         self.stts_txt = self.status.create_text(150, 25, text=Controller().status[0], fill=Controller().status[1], font='Times 17 bold')
 
         # Área das letras erradas
-        self.letrase = Label(self.cima, background=Controller().fundo, foreground=Controller().letra, text=Controller().letraserradas, justify='center', width=300)
+        self.letrase = Label(self.cima, background=Controller().fundo, foreground=Controller().letra, text=Controller().letraserradas, justify='center', width=300, font='Times 12 bold')
         self.letrase.pack(side='left')
 
         self.controller = None
@@ -160,7 +171,9 @@ class Controller:
 
         self.imagem = str(Model().imagematual)
         self.status = Model().status
-        self.letraserradas = 'A    D    F    G    H\nJ    K    L'
+        self.letraserr = ''
+        self.letrasace = ''
+        self.letraserradas = self.letrase()
 
     def novojogo(self, *args):
         pass
@@ -172,6 +185,24 @@ class Controller:
 
     def sair(self, *args):
         exit()
+
+    
+    def letrase(self):
+        string = ''
+        for i, c in enumerate(self.letraserr):
+            if (i)%5 == 0:
+                string += '\n'
+
+            string += f'{c.upper()}'
+
+            if self.letraserr[-1] != self.letraserr[i]:
+                string += '    '
+
+        return string
+
+
+    def verifica(self):
+        pass
 
 
 class App(Tk):
@@ -188,6 +219,10 @@ class App(Tk):
         self.minsize(900, 500)
         self.maxsize(900, 500)
         self.geometry('900x500+225+150')
+
+    
+    def atualizar(self):
+        pass
 
 
 if __name__ == '__main__':
