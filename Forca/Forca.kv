@@ -1,0 +1,48 @@
+#:kivy 2.0.0
+
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: '2dp', '50dp', '2dp', '35dp' 
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Imagem'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Palavra'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Letras'
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: '2dp', '10dp', '2dp', '15dp'
+        size_hint: None, None
+        height: '60dp'
+        width: '200dp'
+        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+        TextInput: 
+            hint_text: 'Digite a letra aqui'
+            multiline: False
+            font_context: '50pt'
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: '2dp'
+        spacing: '1dp'
+        size_hint_y: None
+        height: '55dp'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Novo Jogo'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Confirmar'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Mudar Tema'
