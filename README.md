@@ -1,13 +1,5 @@
 # Jogo da Forca
 
-### Prints do app (ainda não funcional)
-
-<img src='Forca/images/prints/1.png' alt='print do app jogo da forca'/> &nbsp; <img src='Forca/images/prints/2.png' alt='print do app joog da forca'/>
-
-<img src='Forca/images/prints/3.png' alt='print do app jogo da forca em que o jogador ganhou'/> &nbsp; <img src='Forca/images/prints/4.png' alt='print do app joog da forca em que o jogador perdeu'/>
-
-##
-
 ### Imagens da ideia (criadas no [Canva](https://www.canva.com/))
 
 <img src='Forca/images/ideia/1.png' alt='Jogo da Velha vazio'/> &nbsp; <img src='Forca/images/ideia/2.png' alt='Jogo da Velha com a letra F errada'/>
@@ -23,7 +15,7 @@ O Jogo não necessáriamente seguirá essas cores e terá vários temas para alt
 ### Linguagens e Bibliotecas usadas até o momento:
 
 - Python
-- Tkinter
+- Kivy
   - Criar a interface gráfica do aplicativo.
 - Pandas
   - Banco de Dados que ainda está na maquina.
@@ -43,7 +35,7 @@ Clássico Jogo da Forca com palavras e um boneco sendo enforcado, sendo necessá
  <h3>Languages and Libraries used so far:</h3>
 
 - Python
-- Tkinter
+- Kivy
   - Create the graphic interface of the app.
 - Pandas
   - Database, on the machine for now.
