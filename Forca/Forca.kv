@@ -1,51 +1,65 @@
 #:kivy 2.0.0
 
-BoxLayout:
-    orientation: 'vertical'
+<Main>:
     BoxLayout:
-        orientation: 'horizontal'
-        padding: '2dp', '50dp', '2dp', '35dp' 
-        BoxLayout:
-            orientation: 'vertical'
-            canvas:
-                Rectangle:
-                    source: 'Forca/images/forca.png'
-                    pos: self.pos
-                    size: self.size
+        orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
-            Label:
-                text: 'Palavra'
-        BoxLayout:
-            orientation: 'vertical'
-            Label:
-                text: 'Letras\nErradas'
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: '2dp', '10dp', '2dp', '15dp'
-        size_hint: None, None
-        height: '60dp'
-        width: '200dp'
-        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
-        TextInput: 
-            hint_text: 'Digite a letra aqui'
-            multiline: False
-            font_context: '50pt'
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: '2dp'
-        spacing: '1dp'
-        size_hint_y: None
-        height: '55dp'
+            padding: '2dp', '50dp', '2dp', '35dp' 
+            BoxLayout:
+                orientation: 'vertical'
+                canvas:
+                    Rectangle:
+                        id: image
+                        source: 'Forca/images/forca.png'
+                        pos: self.pos
+                        size: self.size
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: output
+                    text: 'Palavra'
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    id: wrongs
+                    text: 'Letras\nErradas'
         BoxLayout:
             orientation: 'horizontal'
+            padding: '2dp', '10dp', '2dp', '15dp'
+            size_hint: None, None
+            height: '60dp'
+            width: '200dp'
+            pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+            TextInput:
+                id: input
+                hint_text: 'Digite a letra aqui'
+                multiline: False
+                font_context: '50pt'
             Button:
-                text: 'Novo Jogo'
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: 'Confirmar'
+                id: confirm
+                size_hint_x: None
+                width: '50dp'
+                text: 'Ok'
+                on_release: root.refresh()
         BoxLayout:
             orientation: 'horizontal'
-            Button:
-                text: 'Mudar Tema'
+            padding: '2dp'
+            spacing: '1dp'
+            size_hint_y: None
+            height: '55dp'
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: add_word
+                    text: 'Add Palavra'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    id: new_game
+                    text: 'Novo Jogo'
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    id: change_theme
+                    text: 'Mudar Tema'
