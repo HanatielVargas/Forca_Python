@@ -5,7 +5,7 @@
         orientation: 'vertical'
         canvas:
             Color:
-                rgba: root.TEMAS[root.tema_atual]['Fundo']
+                rgba: root.temas[root.tema_atual]['Fundo']
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -19,20 +19,24 @@
                         rgba: 1, 1, 1, 1
                     Rectangle:
                         id: image
-                        source: 'Forca/images/forca.png'
+                        source: root.imagem_atual
                         pos: self.pos
-                        size: self.size
+                        size: self.width, self.width
             BoxLayout:
-                orientation: 'horizontal'
+                orientation: 'vertical'
+                Label:
+                    color: root.temas[root.tema_atual]['Letra']
+                    font_size: '20sp'
+                    text: ''
                 Label:
                     id: output
-                    color: root.TEMAS[root.tema_atual]['Letra']
+                    color: root.temas[root.tema_atual]['Letra']
                     text: 'Palavra'
             BoxLayout:
                 orientation: 'vertical'
                 Label:
                     id: wrongs
-                    color: root.TEMAS[root.tema_atual]['Letra']
+                    color: root.temas[root.tema_atual]['Letra']
                     text: 'Letras\nErradas'
         BoxLayout:
             orientation: 'horizontal'
@@ -43,14 +47,14 @@
             pos_hint: {'center_y': 0.5, 'center_x': 0.5}
             TextInput:
                 id: input
-                color: root.TEMAS[root.tema_atual]['Letra']
+                color: root.temas[root.tema_atual]['Letra']
                 hint_text: 'Digite a letra aqui'
                 multiline: False
                 font_context: '50pt'
             Button:
                 id: confirm
-                background_color: root.TEMAS[root.tema_atual]['Fundo']
-                color: root.TEMAS[root.tema_atual]['Letra']
+                background_color: root.temas[root.tema_atual]['Fundo']
+                color: root.temas[root.tema_atual]['Letra']
                 size_hint_x: None
                 width: '50dp'
                 text: 'Ok'
@@ -65,22 +69,22 @@
                 orientation: 'horizontal'
                 Button:
                     id: add_word
-                    background_color: root.TEMAS[root.tema_atual]['Fundo']
-                    color: root.TEMAS[root.tema_atual]['Letra']
+                    background_color: root.temas[root.tema_atual]['Fundo']
+                    color: root.temas[root.tema_atual]['Letra']
                     text: 'Add Palavra'
                     on_release: root.adicionar_palavra()
             BoxLayout:
                 orientation: 'vertical'
                 Button:
                     id: new_game
-                    background_color: root.TEMAS[root.tema_atual]['Fundo']
-                    color: root.TEMAS[root.tema_atual]['Letra']
+                    background_color: root.temas[root.tema_atual]['Fundo']
+                    color: root.temas[root.tema_atual]['Letra']
                     text: 'Novo Jogo'
             BoxLayout:
                 orientation: 'horizontal'
                 Button:
                     id: change_theme
-                    background_color: root.TEMAS[root.tema_atual]['Fundo']  
-                    color: root.TEMAS[root.tema_atual]['Letra']
+                    background_color: root.temas[root.tema_atual]['Fundo']  
+                    color: root.temas[root.tema_atual]['Letra']
                     text: 'Mudar Tema'
                     on_release: root.mudar_tema()
