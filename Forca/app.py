@@ -44,11 +44,20 @@ class Main(Screen):
 
     def atualizar(self):
         self.atua_tent()
+        self.atua_pala()
+        self.atua_imag()
         self.ids.wrongs.text = self.tentativas
+        
 
 
     def atua_pala(self):
-        pass
+        self.palavra_adv = ''
+        for c in self.palavra:
+            if c not in self.tentativas:
+                self.palavra_adv += '_ '
+            else:
+                self.palavra_adv += f'{c} '
+        self.ids.output.text = self.palavra_adv
 
 
     def atua_imag(self):
@@ -58,10 +67,11 @@ class Main(Screen):
     def atua_tent(self):
         tent = self.ids.input.text
         if tent not in self.tentativas and len(tent) == 1:
-            self.tentativas += ' '
             self.tentativas += tent.upper()
             if len(self.tentativas) % 10 == 0:
                 self.tentativas += '\n'
+            else: 
+                self.tentativas += ' '
 
     
     def novo_jogo(self):
