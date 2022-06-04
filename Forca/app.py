@@ -1,7 +1,7 @@
 '''
 Jogo Da Forca by Hanatiel Vargas
 Jogo clássico da forca com letras e boneco sendo enforcado caso erre a letra e a palavra.
-Criando o jogo para aprender kivy, web scrape e data storage com xlsx e sql. 
+Criando o jogo para aprender kivy e data storage com xlsx. 
 '''
 
 from kivy.app import App
@@ -42,9 +42,26 @@ class Main(Screen):
     palavra_adv = ('_ ' * len(palavra))[:-1]
 
 
-    def atualizar(self):    
-        self.ids.output.text = self.palavra_adv
-        self.ids.wrongs.text = 'erros'
+    def atualizar(self):
+        self.atua_tent()
+        self.ids.wrongs.text = self.tentativas
+
+
+    def atua_pala(self):
+        pass
+
+
+    def atua_imag(self):
+        pass
+
+
+    def atua_tent(self):
+        tent = self.ids.input.text
+        if tent not in self.tentativas and len(tent) == 1:
+            self.tentativas += ' '
+            self.tentativas += tent.upper()
+            if len(self.tentativas) % 10 == 0:
+                self.tentativas += '\n'
 
     
     def novo_jogo(self):
@@ -69,7 +86,7 @@ class Main(Screen):
 
         try:
             site = PoolManager().request('GET', f'https://www.dicio.com.br/{word.lower()}/')
-            if 'Ops' in str(site.data) or word == '' or word.capitalize() in self.lista_palavras:
+            if 'Ops' in str(site.data) or word == '' or word.capitalize() in self.lista_palavras or word.isalnum():
                 raise exceptions.SSLError
         except exceptions.SSLError:
             pass

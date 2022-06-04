@@ -31,13 +31,14 @@
                 Label:
                     id: output
                     color: root.temas[root.tema_atual]['Letra']
-                    text: 'Palavra'
+                    text: root.palavra_adv
             BoxLayout:
                 orientation: 'vertical'
                 Label:
                     id: wrongs
                     color: root.temas[root.tema_atual]['Letra']
-                    text: 'Letras\nErradas'
+                    halign: 'center'
+                    text: ''
         BoxLayout:
             orientation: 'horizontal'
             padding: '2dp', '10dp', '2dp', '15dp'
@@ -82,7 +83,7 @@
                     text: 'Novo Jogo'
             BoxLayout:
                 orientation: 'horizontal'
-                Button:
+                Button: 
                     id: change_theme
                     background_color: root.temas[root.tema_atual]['Fundo']  
                     color: root.temas[root.tema_atual]['Letra']
