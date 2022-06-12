@@ -36,42 +36,43 @@ class Main(Screen):
         if c not in lista_palavras and c != '':
             lista_palavras.append(str(c))
 
-    palavra = choice(lista_palavras)
+    palavra = str(choice(lista_palavras))
+    palavra = palavra.upper()
+    print(palavra)
     tema_atual = lista_temas[-1]
     imagem_atual = 'Forca/images/forca_6vidas.png'
     palavra_adv = ('_ ' * len(palavra))[:-1]
 
 
     def atualizar(self):
-        self.atua_tent()
-        self.atua_pala()
+        self.atua_output()
         self.atua_imag()
-        self.ids.wrongs.text = self.tentativas
-        
-
-
-    def atua_pala(self):
-        self.palavra_adv = ''
-        for c in self.palavra:
-            if c not in self.tentativas:
-                self.palavra_adv += '_ '
-            else:
-                self.palavra_adv += f'{c} '
-        self.ids.output.text = self.palavra_adv
 
 
     def atua_imag(self):
         pass
 
 
-    def atua_tent(self):
+    def atua_output(self):
         tent = self.ids.input.text
-        if tent not in self.tentativas and len(tent) == 1:
-            self.tentativas += tent.upper()
+        if str(tent).upper() not in self.tentativas and len(tent) == 1 and str(tent).upper() not in self.palavra:
+            self.tentativas += str(tent).upper()
             if len(self.tentativas) % 10 == 0:
                 self.tentativas += '\n'
             else: 
                 self.tentativas += ' '
+            self.ids.wrongs.text = self.tentativas
+        elif str(tent).upper() not in self.tentativas and len(tent) == 1 and str(tent).upper() in self.palavra:
+            print(str(tent))
+            self.palavra_adv = ''
+            for c in self.palavra:
+                if str(tent).upper() == c.upper():
+                    self.palavra_adv += f'{str(tent).upper()} '
+                    print(2)
+                else:
+                    self.palavra_adv += '_ '
+                    print(3)
+            self.ids.output.text = self.palavra_adv
 
     
     def novo_jogo(self):
